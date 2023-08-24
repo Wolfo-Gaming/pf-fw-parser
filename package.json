@@ -1,0 +1,15 @@
+{
+  "name": "pf-fw-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "wolfo-gaming",
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/Wolfo-Gaming/pf-fw-parser"
+  }
+}
