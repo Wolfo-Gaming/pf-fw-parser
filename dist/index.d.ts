@@ -51,5 +51,5 @@ interface FirewallLogEntry {
     advskew?: string;
     advbase?: string;
 }
-export declare function parse_firewall_log_line(line: string, debug?: boolean): FirewallLogEntry | string;
+export declare function parseLogLine(line: string, debug?: boolean): FirewallLogEntry;
 export {};

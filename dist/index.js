@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parse_firewall_log_line = void 0;
+exports.parseLogLine = void 0;
 function convert_real_interface_to_friendly_descr(realint) {
     return realint;
 }
-function parse_firewall_log_line(line, debug = false) {
+function parseLogLine(line, debug = false) {
     const flent = {};
     let log_split = null;
     if (line.startsWith('<')) {
@@ -18,7 +18,7 @@ function parse_firewall_log_line(line, debug = false) {
         log_split = line.match(pattern);
     }
     if (!log_split) {
-        return "";
+        return;
     }
     const [, time, host, rule] = log_split;
     flent.time = new Date(time.replace('T', ' '));
@@ -140,7 +140,6 @@ function parse_firewall_log_line(line, debug = false) {
         if (debug) {
             throw new Error(`There was an error parsing rule number: ${flent.rulenum}.`);
         }
-        return "";
     }
     if (flent.src.trim() !== "" || flent.dst.trim() !== "" || flent.time) {
         return flent;
@@ -149,7 +148,6 @@ function parse_firewall_log_line(line, debug = false) {
         if (debug) {
             throw new Error(`There was an error parsing rule: ${line}.`);
         }
-        return "";
     }
 }
-exports.parse_firewall_log_line = parse_firewall_log_line;
+exports.parseLogLine = parseLogLine;

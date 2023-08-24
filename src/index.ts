@@ -56,7 +56,7 @@ interface FirewallLogEntry {
     return realint; 
   }
   
-  export function parse_firewall_log_line(line: string, debug: boolean = false): FirewallLogEntry | string {
+  export function parseLogLine(line: string, debug: boolean = false): FirewallLogEntry {
     const flent: FirewallLogEntry = ({} as any);
     let log_split: string[] | null = null;
   
@@ -71,7 +71,7 @@ interface FirewallLogEntry {
     }
   
     if (!log_split) {
-      return "";
+      return;
     }
   
     const [, time, host, rule] = log_split;
@@ -201,7 +201,6 @@ interface FirewallLogEntry {
       if (debug) {
         throw new Error(`There was an error parsing rule number: ${flent.rulenum}.`);
       }
-      return "";
     }
   
     if (flent.src.trim() !== "" || flent.dst.trim() !== "" || flent.time) {
@@ -210,6 +209,5 @@ interface FirewallLogEntry {
       if (debug) {
         throw new Error(`There was an error parsing rule: ${line}.`);
       }
-      return "";
     }
   }
